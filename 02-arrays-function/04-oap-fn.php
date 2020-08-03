@@ -3,7 +3,7 @@
 require __DIR__ . "/vendor/autoload.php";
 
 function oap($person) {
-    return 65 < $person["age"];
+    return $person["age"] > 65  ;
 }
 
 

@@ -3,7 +3,7 @@
 require __DIR__ . "/vendor/autoload.php";
 
 function timesBy($arr, $multiplier){
-   return collect($arr)->map(fn($n) => $n * $multiplier);
+   return collect($arr)->map(fn($n) => $n * $multiplier)->all();
 }
 
 // function timesBy($array, $multiplier){
