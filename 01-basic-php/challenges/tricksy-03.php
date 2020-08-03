@@ -14,13 +14,20 @@ while($mulitiplier < 16){
         echo "\n";
     }
     $result = $count * $mulitiplier;
-    echo $result. " ";
+    if($mulitiplier !== 16){
+        echo $result . " ";
+    }
     $count += 1;
-}
+};
 
 
+/* zack's solution
 
-// for($i = 1; $i <= 255; $i += 1){
+for ($row = 1; $row <= 15; $row += 1) { 
+    for ($col = 1; $col <= 15; $col += 1) { 
+        echo(($col * $row) . "\t");
+    }
+    echo("\n");
+};
 
-// };
-?>
+*/
