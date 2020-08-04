@@ -8,7 +8,7 @@ class Validator{
         return preg_match('/^\S+@[a-z]+[.][a-z]+/i', $str) === 1;
     }
 
-        public function postcode($str)
+    public function postcode($str)
     {
         return preg_match('/^\D+\w+\s\d+\D{2}$/i', $str) === 1;
     }
