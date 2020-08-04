@@ -4,9 +4,8 @@ require __DIR__ . "/vendor/autoload.php";
 
 function wow($n){
     $output = "w";
-    for($i = 1; $i < $n; $i += 1){
-        $output . "o";
-        dump($i);
+    for($i = 1; $i <= $n; $i += 1){
+        $output .= "o";
     }
     return $output . "w";
     
