@@ -3,20 +3,20 @@
 require __DIR__ . "/vendor/autoload.php";
 
 class LightSwitch {
-    private $isOn = false;
+    private $status = false;
 
     public function isOn(){
-        return $this->isOn;
+        return $this->status;
     }
     
     public function turnOn(){
-        $this->isOn = true;
-        return $this->isOn;
+        $this->status = true;
+        return $this->status;
     }
     
     public function turnOff(){
-        $this->isOn = false;
-        return $this->isOn;
+        $this->status = false;
+        return $this->status;
     }
 }
 
