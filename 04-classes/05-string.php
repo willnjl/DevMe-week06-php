@@ -2,7 +2,8 @@
 
 require __DIR__ . "/vendor/autoload.php";
 
-class Stringy{
+class Stringy
+{
     private $string;
 
     public function __construct($str)

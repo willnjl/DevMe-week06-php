@@ -2,30 +2,36 @@
 
 require __DIR__ . "/vendor/autoload.php";
 
-class Car{
+class Car
+{
     private $make;
     private $plate;
     private $mileage = 0;
 
-    public function __construct($make, $plate){
+    public function __construct($make, $plate)
+    {
         $this->make = $make;
         $this->plate = $plate;
     }
 
-    public function getNumberplate(){
+    public function getNumberplate()
+    {
         return $this->plate;
     }
 
-    public function getMake(){
+    public function getMake()
+    {
         return $this->make;
     }
 
-    public function addJourney($dist){
+    public function addJourney($dist)
+    {
         $this->mileage += $dist;
         return $this->mileage;
     }
 
-    public function getMileage(){
+    public function getMileage()
+    {
         return $this->mileage;
     } 
 }

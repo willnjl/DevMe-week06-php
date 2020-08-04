@@ -2,19 +2,23 @@
 
 require __DIR__ . "/vendor/autoload.php";
 
-class LightSwitch {
+class LightSwitch
+{
     private $status = false;
 
-    public function isOn(){
+    public function isOn()
+    {
         return $this->status;
     }
     
-    public function turnOn(){
+    public function turnOn()
+    {
         $this->status = true;
         return $this->status;
     }
     
-    public function turnOff(){
+    public function turnOff()
+    {
         $this->status = false;
         return $this->status;
     }

@@ -2,7 +2,8 @@
 
 require __DIR__ . "/vendor/autoload.php";
 
-class Validator{
+class Validator
+{
     public function email($str)
     {
         return preg_match('/^\S+@[a-z]+[.][a-z]+/i', $str) === 1;

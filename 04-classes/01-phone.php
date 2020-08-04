@@ -2,19 +2,23 @@
 
 require __DIR__ . "/vendor/autoload.php";
 
-class Phone {
+class Phone
+{
     private $make;
     private $model;
 
-    public function __construct($make, $model){
+    public function __construct($make, $model)
+    {
         $this->make = $make;
         $this->model = $model;
     }
 
-    public function make(){
+    public function make()
+    {
         return $this->make;
     }
-    public function model(){
+    public function model()
+    {
         return $this->model;
     }
 }

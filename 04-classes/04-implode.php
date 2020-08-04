@@ -2,18 +2,21 @@
 
 require __DIR__ . "/vendor/autoload.php";
 
-class Address{
+class Address
+{
     private $street;
     private $town;
     private $postcode;
 
-    public function __construct($street, $town, $postcode){
+    public function __construct($street, $town, $postcode)
+    {
         $this->street = $street;
         $this->town = $town;
         $this->postcode = $postcode;
     }
 
-    public function setStreet($newStreet){
+    public function setStreet($newStreet)
+    {
         $this->street = $newStreet;
         return $this->street;
     }
