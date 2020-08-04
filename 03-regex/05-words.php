@@ -3,7 +3,7 @@
 require __DIR__ . "/vendor/autoload.php";
 
 function words($str){
-   return preg_split('/\s+/', $str);
+   return preg_split('/,*\s+/', $str);
 }
 
 dump(words("This is a sentence")); // ["This", "is", "a", "sentence"]

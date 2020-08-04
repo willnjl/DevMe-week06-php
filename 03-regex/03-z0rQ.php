@@ -5,7 +5,7 @@
 require __DIR__ . "/vendor/autoload.php";
 
 function zOrQ($str){
-    return preg_match('/[zZqQ]/', $str) === 1; 
+    return preg_match('/[zq]/i', $str) === 1; 
 }
 
 dump(zOrQ("blah")); // false

@@ -3,7 +3,7 @@
 require __DIR__ . "/vendor/autoload.php";
 
 function validEmail($str){
-    return preg_match('/^.+@[a-z]+[.][a-z]+/', $str) === 1;
+    return preg_match('/^.+@[a-z]+[.][a-z]+/i', $str) === 1;
 }
 
 dump(validEmail(" blahf   ")); // false
