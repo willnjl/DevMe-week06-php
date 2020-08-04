@@ -5,12 +5,12 @@ require __DIR__ . "/vendor/autoload.php";
 class Validator{
     public function email($str)
     {
-    return preg_match('/^\S+@[a-z]+[.][a-z]+/i', $str) === 1;
+        return preg_match('/^\S+@[a-z]+[.][a-z]+/i', $str) === 1;
     }
 
-    public function postcode($str)
+        public function postcode($str)
     {
-    return preg_match('/^\D+\w+\s\d+\D{2}$/i', $str) === 1;
+        return preg_match('/^\D+\w+\s\d+\D{2}$/i', $str) === 1;
     }
 }
 
