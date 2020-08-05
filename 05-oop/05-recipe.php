@@ -64,14 +64,15 @@ class Recipe
 
     public function dietary()
     {
-        $allAllergens = [];
+        $output = [];
+
         foreach($this->ingredients as $ingredient){
             $allergens = $ingredient->getAllergens();
-            // dump($ingredient->getAllergens());
-            $allAllergens = array_merge($allAllergens, $allergens);
-        }
-        return $allAllergens;
+            $output = array_unique(array_merge($output, $allergens));
+        };
+        return implode(", ", $output);
     }
+
     public function vegan()
     {
         return $this->ingredients
