@@ -18,19 +18,19 @@ class Address
     public function setStreet($newStreet)
     {
         $this->street = $newStreet;
-        return $this->street;
+        return $this;
     }
 
     public function setTown($newTown)
     {
         $this->town = $newTown;
-        return $this->town;
+        return $this;
     }
 
     public function setPostcode($newPostcode)
     {
         $this->postcode = $newPostcode;
-        return $this->postcode;
+        return $this;
     }
 
     public function fullAddress()

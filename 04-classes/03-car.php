@@ -14,6 +14,12 @@ class Car
         $this->plate = $plate;
     }
 
+    public function addJourney($dist)
+    {
+        $this->mileage += $dist;
+        return $this;
+    }
+    
     public function getNumberplate()
     {
         return $this->plate;
@@ -24,11 +30,6 @@ class Car
         return $this->make;
     }
 
-    public function addJourney($dist)
-    {
-        $this->mileage += $dist;
-        return $this->mileage;
-    }
 
     public function getMileage()
     {

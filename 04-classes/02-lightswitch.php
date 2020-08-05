@@ -14,13 +14,13 @@ class LightSwitch
     public function turnOn()
     {
         $this->status = true;
-        return $this->status;
+        return $this;
     }
     
     public function turnOff()
     {
         $this->status = false;
-        return $this->status;
+        return $this;
     }
 }
 
