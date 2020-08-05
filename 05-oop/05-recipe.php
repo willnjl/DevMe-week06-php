@@ -11,7 +11,7 @@ class Ingredient
     public function __construct($name, $allergens)
     {
         $this->name = $name;
-        $this->allergens = collect($allergens);
+        $this->allergens = $allergens;
         return $this;
     }
 
@@ -64,12 +64,19 @@ class Recipe
 
     public function dietary()
     {
-        return $this->ingredients->map(fn($item) => $item->getAllergens())->all();
+        $allAllergens = [];
+        foreach($this->ingredients as $ingredient){
+            $allergens = $ingredient->getAllergens();
+            // dump($ingredient->getAllergens());
+            $allAllergens = array_merge($allAllergens, $allergens);
+        }
+        return $allAllergens;
     }
     public function vegan()
     {
-        $ingredients = $this->ingredients->map(fn($item) => $item->getAllergens());
-        return $ingredients->contains('animal produce');
+        return $this->ingredients
+        ->map(fn($item) => $item->getAllergens())
+        ->contains('animal produce');
 
     }
 
@@ -80,6 +87,8 @@ class Recipe
         foreach($this->ingredients as $ingredient){
             echo "-{$ingredient->getAmount()} {$ingredient->getName()} \n";
         }
+        echo "\nMethod\n";
+        echo "\n{$this->method}\n";
     }
 
 }
@@ -104,7 +113,7 @@ $cake->addMethod("Put them in a bowl, mix them together, cook for a bit. Job's a
 
 // we can see the recipe
 // using echo so it looks nicer
-echo $cake->display();
+// echo $cake->display();
 /*
     "Cake
 
@@ -121,7 +130,7 @@ echo $cake->display();
  */
 
 // we can list dietary information
-// dump($cake->dietary()); // "gluten, animal produce, dairy"
+ dump($cake->dietary()); // "gluten, animal produce, dairy"
 
 // is the recipe vegan? (i.e. contains animal produce)
 // dump($cake->vegan()); // false
