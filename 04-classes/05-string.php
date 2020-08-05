@@ -16,7 +16,7 @@ class Stringy
         return strtolower($this->string);
     }
     
-    public function upper(Type $var = null)
+    public function upper()
     {
         return strtoupper($this->string);
     }

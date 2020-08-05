@@ -30,15 +30,16 @@ class Address
     public function setPostcode($newPostcode)
     {
         $this->postcode = $newPostcode;
+        return $this->postcode;
     }
 
     public function fullAddress()
     {
-        return implode(", ",[
+        return implode(", ", [
             $this->street,
             $this->town, 
             $this->postcode
-            ]);
+        ]);
     }
 }
 
