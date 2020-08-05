@@ -4,47 +4,53 @@ require __DIR__ . "/vendor/autoload.php";
 
 class Basket
 {
-    private $contents = [];
+    private $contents;
 
-    public function add($basketItem)
+    public function __construct()
     {
-        $this->contents[] = $basketItem;
+        $this->contents = collect();
+        return $this;
+    }
+
+    public function add($item)
+    {
+        $this->contents->push($item) ;
         return $this;
     }
 
     public function total()
     {
-        return collect($this->contents)->reduce(function($sum, $current){
+        return $this->contents->reduce(function($sum, $current){
             return $sum += $current->getPrice();
         },0);
     }
 
     public function items()
     {
-        return collect($this->contents)->pluck('itemName');
+        return $this->contents->map(fn($item) => $item->getName())->all();
     }
 }
 
 class BasketItem
 {
-    private $itemName;
-    private $itemPrice;
+    private $name;
+    private $price;
 
     public function __construct($name, $price)
     {
-        $this->itemName = $name;
-        $this->itemPrice = $price;
+        $this->name = $name;
+        $this->price = $price;
         return $this;
     }
 
     public function getPrice()
     {
-        return $this->itemPrice;
+        return $this->price;
     }
     
     public function getName()
     {
-        return $this->itemName;
+        return $this->name;
     }
 }
 
@@ -57,5 +63,5 @@ $basket->add($item1);
 $basket->add($item2);
 
 
-// dump($basket->total()); // £6.00
+dump($basket->total()); // £6.00
 dump($basket->items()); // ["coffee","tea"]
