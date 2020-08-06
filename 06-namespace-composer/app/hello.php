@@ -2,7 +2,8 @@
 
 namespace App;
 
-class Hello{
+class Hello
+{
     public function hello($name)    
     {
         return "Hello {$name}";

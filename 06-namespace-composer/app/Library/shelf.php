@@ -2,7 +2,8 @@
 
 namespace App\Library;
 
-class Shelf{
+class Shelf
+{
     private $contains;
 
     public function __construct()
