@@ -55,3 +55,14 @@ dump($book->currentPage()); // 13 - start on page 1
 // read another 25 pages
 $book->read(25);
 dump($book->currentPage()); // 38
+
+echo "\nQuestion 5:\n";
+
+use App\Library\Shelf;
+
+$shelf = new Shelf();
+$shelf->addBook($book);
+$shelf->addBook(new Book("The Catcher in the Rye", 277));
+$shelf->addBook(new Book("Stamped from the Beginning", 582));
+
+dump($shelf->titles()); // ["Zero: The Biography of a Dangerous Idea", "The Catcher in the Rye", "Stamped from the Beginning"]
