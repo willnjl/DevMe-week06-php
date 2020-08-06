@@ -12,12 +12,12 @@ class Person{
      $this->lastName = $lastName;
     }
 
-    public function sayHelloTo($person)
+    public function sayHelloTo(Person $person) : string
     {
         return "Hello, {$person->getName()}";
     }
 
-    public function getName()
+    public function getName(): string
     {
         return "{$this->firstName} {$this->lastName}";
     }

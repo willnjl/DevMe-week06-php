@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 require __DIR__ . "/vendor/autoload.php";
 
@@ -6,18 +7,18 @@ class LightSwitch
 {
     private $status = false;
 
-    public function isOn()
+    public function isOn() : bool
     {
         return $this->status;
     }
     
-    public function turnOn()
+    public function turnOn() : LightSwitch
     {
         $this->status = true;
         return $this;
     }
     
-    public function turnOff()
+    public function turnOff() : LightSwitch
     {
         $this->status = false;
         return $this;

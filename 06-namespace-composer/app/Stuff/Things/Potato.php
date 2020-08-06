@@ -7,7 +7,7 @@ class Potato
     private $grown = false;
     private $watered = 0;
 
-    public function water()
+    public function water() : Potato
     {
         $this->watered += 1;
         if($this->watered >= 5){
@@ -16,7 +16,7 @@ class Potato
         return $this;
     }
 
-    public function hasGrown()
+    public function hasGrown() : bool
     {
         return $this->grown;
     }

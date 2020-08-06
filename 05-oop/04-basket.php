@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 require __DIR__ . "/vendor/autoload.php";
 
 class Basket
@@ -9,23 +11,22 @@ class Basket
     public function __construct()
     {
         $this->contents = collect();
-        return $this;
     }
 
-    public function add($item)
+    public function add(BasketItem $item) : Basket
     {
         $this->contents->push($item) ;
         return $this;
     }
 
-    public function total()
+    public function total() : float
     {
         return $this->contents->reduce(function($sum, $current){
             return $sum += $current->getPrice();
         },0);
     }
 
-    public function items()
+    public function items() : array
     {
         return $this->contents->map(fn($item) => $item->getName())->all();
     }

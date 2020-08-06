@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 require __DIR__ . "/vendor/autoload.php";
 
 class Phone
@@ -7,17 +9,17 @@ class Phone
     private $make;
     private $model;
 
-    public function __construct($make, $model)
+   public function __construct(string $make, string $model)
     {
         $this->make = $make;
         $this->model = $model;
     }
 
-    public function make()
+    public function make() : string
     {
         return $this->make;
     }
-    public function model()
+    public function model() : string
     {
         return $this->model;
     }

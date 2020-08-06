@@ -1,43 +1,44 @@
 <?php
 // Create a class that performs a series of transformations on a string. You can use the get() method to get the final result.
 
+declare(strict_types=1);
+
 require __DIR__ . "/vendor/autoload.php";
 
 class StringyRedux
 {
     private $string;
 
-    public function __construct($string)
+    public function __construct(string $string)
     {
         $this->string = $string;
-        return $this;
     }
 
-    public function repeat($n)
+    public function repeat(int $n) : StringyRedux
     {
         $this->string = str_repeat($this->string, $n);
         return $this;
     }
 
-    public function append($appendage)
+    public function append(string $appendage) : StringyRedux
     {
         $this->string .= $appendage;
         return $this;
     }
 
-    public function upper()
+    public function upper() : StringyRedux
     {
         $this->string = strtoupper($this->string);
         return $this;
     }
 
-    public function lower()
+    public function lower() : StringyRedux
     {
         $this->string = strtolower($this->string);
         return $this;
     }
     
-    public function get()
+    public function get() : string
     {
         return $this->string;
     }

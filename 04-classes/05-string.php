@@ -1,32 +1,34 @@
 <?php
 
+declare(strict_types=1);
+
 require __DIR__ . "/vendor/autoload.php";
 
 class Stringy
 {
     private $string;
 
-    public function __construct($str)
+    public function __construct(string $str)
     {
         $this->string = $str;
     }
 
-    public function lower()
+    public function lower() : string
     {
         return strtolower($this->string);
     }
     
-    public function upper()
+    public function upper() : string 
     {
         return strtoupper($this->string);
     }
 
-    public function append($str)
-    {
+    public function append(string $str) : string
+    { 
         return $this->string . $str;
     }
 
-    public function repeat($n)
+    public function repeat(int $n) : string
     {
         return str_repeat($this->string, $n);
     }

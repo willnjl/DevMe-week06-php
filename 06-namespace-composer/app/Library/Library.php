@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Library;
 
 class Library
@@ -12,13 +14,13 @@ class Library
         return $this; 
     }
 
-    public function addShelf($shelf)
+    public function addShelf(Shelf $shelf) : Library
     {
         $this->shelves->push($shelf);
         return $this;
     }
 
-    public function titles()
+    public function titles() : array
     {
         $output = collect();
         $this->shelves->map(fn($shelf) =>$output->push(...$shelf->titles()));

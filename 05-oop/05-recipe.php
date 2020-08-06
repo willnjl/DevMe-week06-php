@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 require __DIR__ . "/vendor/autoload.php";
 
 class Ingredient
@@ -8,19 +10,18 @@ class Ingredient
     private $allergens;
     private $amount;
 
-    public function __construct($name, $allergens)
+    public function __construct(string $name, array $allergens)
     {
         $this->name = $name;
         $this->allergens = $allergens;
-        return $this;
     }
 
-    public function getName()
+    public function getName() : string
     {
         return $this->name;
     }
 
-    public function getAllergens()
+    public function getAllergens() : array
     {
         return $this->allergens;
     }
@@ -30,9 +31,10 @@ class Ingredient
         return $this->amount;
     }
 
-    public function setAmount($amount)
+    public function setAmount(string $amount) : Ingredient
     {
         $this->amount = $amount;
+        return $this;
     }
 }
 
@@ -43,26 +45,26 @@ class Recipe
     private $ingredients;
     private $method;
 
-    public function __construct($name)
+    public function __construct(string $name)
     {
         $this->name = $name;
         $this->ingredients = collect();
     }
 
-    public function addIngredient($ingredient,$amount)
+    public function addIngredient(Ingredient $ingredient, string $amount) : Recipe
     {   
         $this->ingredients->push($ingredient);
         $ingredient->setAmount($amount);
         return $this;
     }
 
-    public function addMethod($string)
+    public function addMethod(string $string) : Recipe
     {
         $this->method = $string;
         return $this;
     }
 
-    public function dietary()
+    public function dietary() : string
     {
         $output = [];
 
@@ -73,23 +75,24 @@ class Recipe
         return implode(", ", $output);
     }
 
-    public function vegan()
+    public function vegan() : bool
     {
         return $this->ingredients
         ->map(fn($item) => $item->getAllergens())
         ->contains('animal produce');
-
     }
 
-    public function display()
+    public function display() : string
     {
-        echo "{$this->name} \n";
-        echo "\nIngredients \n\n";
+        $output = "";
+        $output .= "{$this->name} \n";
+        $output .= "\nIngredients \n\n";
         foreach($this->ingredients as $ingredient){
-            echo "-{$ingredient->getAmount()} {$ingredient->getName()} \n";
+            $output .= "- {$ingredient->getAmount()} {$ingredient->getName()} \n";
         }
-        echo "\nMethod\n";
-        echo "\n{$this->method}\n";
+        $output .= "\nMethod\n";
+        $output .= "\n{$this->method}\n";
+        return $output;
     }
 
 }
@@ -107,14 +110,14 @@ $cake = new Recipe("Cake");
 $cake->addIngredient($flour, "200g");
 $cake->addIngredient($butter, "100g");
 $cake->addIngredient($sugar, "50g");
-$cake->addIngredient($eggs, 2);
+$cake->addIngredient($eggs, "2");
 
 // we can add a method
 $cake->addMethod("Put them in a bowl, mix them together, cook for a bit. Job's a good'un");
 
 // we can see the recipe
 // using echo so it looks nicer
-// echo $cake->display();
+echo $cake->display();
 /*
     "Cake
 
@@ -134,4 +137,4 @@ $cake->addMethod("Put them in a bowl, mix them together, cook for a bit. Job's a
  dump($cake->dietary()); // "gluten, animal produce, dairy"
 
 // is the recipe vegan? (i.e. contains animal produce)
-// dump($cake->vegan()); // false
+dump($cake->vegan()); // false

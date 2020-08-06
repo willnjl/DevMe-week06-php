@@ -7,8 +7,7 @@
 // The wombat should have a sayHelloTo($wombat) method that you pass another wombat to and it will return a greeting
 // The wombat should have a giveHug() method and a howManyHugs() method. howManyHugs() should return the number of hugs the wombat has been given
 
-
-
+declare(strict_types=1);
 require __DIR__ . "/vendor/autoload.php";
 
 class Wombat
@@ -16,26 +15,26 @@ class Wombat
     private $name;
     private $hugs = 0;
 
-    public function __construct ($name){
+    public function __construct (string $name){
         $this->name = $name;
     }
 
-    public function getName()
+    public function getName() : string
     {
         return $this->name;
     }
 
-    public function howManyHugs()
+    public function howManyHugs() : int
     {
         return $this->hugs;
     }
 
-    public function sayHelloTo($wombat)
+    public function sayHelloTo(string $wombat) : string
     {
         return "Hello {$wombat->getName()}";
     }
 
-    public function giveHug()
+    public function giveHug() : Wombat
     {
         $this->hugs += 1;
         return $this;
